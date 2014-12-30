@@ -48,12 +48,12 @@ class Escuela {
         $this->director = $director;
     }
 
-    public function imprimir($p_docente){
+    public function imprimirRecibo($p_docente){
         echo 'Escuela: '.$this->getNombre().' Domicilio: '.$this->getDomicilio().' Director: '.$this->getDirector().'<br />';
-        echo '----------------------------------------------------------------------------------------<br />';
+        echo '---------------------------------------------------------------------------------------------------------------------------------------<br />';
         echo 'Docente: '.$p_docente->getNombre().'<br />';
-        echo 'Sueldo: ......................... $ '.$p_docente->calcularSueldo().'<br/>';
-        echo 'Sueldo Básico: .................. $ '.$p_docente->getSueldoBasico().'<br/>';
+        echo 'Sueldo: ................................. $ '.$p_docente->calcularSueldo().'<br/>';
+        echo 'Sueldo Básico: ..................... $ '.$p_docente->getSueldoBasico().'<br/>';
         echo 'Asignación familiar: ............ $ '.$p_docente->getAsignacionFamiliar().'<br/>';
     }
     
