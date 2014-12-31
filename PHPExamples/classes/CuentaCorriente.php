@@ -80,7 +80,7 @@ class CuentaCorriente {
         if(($this->getSaldo()+$this->getLimiteDescubierto()) > $p_importe){
             return true;
         }else{
-            $this->xQNoPuedeExtraer($p_importe);
+            echo $this->xQNoPuedeExtraer($p_importe).'<br/>';
         }
     }
     
