@@ -86,14 +86,11 @@ class CuentaCorriente {
     
     public function extraer($p_importe){
         if($this->puedeExtraer($p_importe)){
-            
+           $this->setSaldo($this->getSaldo()-$p_importe); 
         }
     }
     
     public function xQNoPuedeExtraer($p_importe){
-        if(($this->getSaldo()+$this->getLimiteDescubierto()) > $p_importe){
-            
-        }
         return 'El importe de extracción sobrepasa el límite descubierto';
     }
     
