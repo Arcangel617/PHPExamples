@@ -91,7 +91,10 @@ class CuentaCorriente {
     }
     
     public function xQNoPuedeExtraer($p_importe){
-        return 0;
+        if(($this->getSaldo()+$this->getLimiteDescubierto()) > $p_importe){
+            
+        }
+        return 'El importe de extracción sobrepasa el límite descubierto';
     }
     
     public function depositar($p_importe){
@@ -102,7 +105,11 @@ class CuentaCorriente {
     
     
     public function mostrar(){
-        echo '';
+        echo '- Cuenta Corriente - <br />';
+        echo 'Nro. Cuenta: <u>'.$this->getNroCuenta().'</u> - Saldo: <u>'.$this->getSaldo().'</u><br />';
+        echo 'Titular: <u>'.$this->getTitular()->nomYApe().'</u><br />';
+        echo 'Descubierto: <u>'.$this->getLimiteDescubierto().'</u><br />';
+        
     }
 
     
