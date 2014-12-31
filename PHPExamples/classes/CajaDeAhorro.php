@@ -34,14 +34,14 @@ class CajaDeAhorro {
         $this->setNroCuenta($p_nroCuenta);
         $this->setTitular($p_titular);
         $this->setSaldo(0);
-        $this->setExtraccoinesPosibles(0);
+        $this->setExtraccoinesPosibles(10);
     }
     
     private function __construct3($p_nroCuenta,$p_titular,$p_saldo){
         $this->setNroCuenta($p_nroCuenta);
         $this->setTitular($p_titular);
         $this->setSaldo($p_saldo);
-        $this->setExtraccoinesPosibles(0);
+        $this->setExtraccoinesPosibles(10);
     }
 
     public function getNroCuenta() {
@@ -77,23 +77,37 @@ class CajaDeAhorro {
     }
 
     private function puedeExtraer($p_importe){
-        return true;
+        if(($this->getSaldo() > $p_importe) && ($this->getExtraccoinesPosibles() > 0)){
+            return true;
+        }else{
+            $this->xQNoPuedeExtraer($p_importe);
+        }
     }
     
     public function extraer($p_importe){
-        return 0;
+        if($this->puedeExtraer($p_importe)){
+            $this->setSaldo($this->getSaldo()-$p_importe);
+        }
     }
     
     public function xQNoPuedeExtraer($p_importe){
-        return 0;
+        if($this->getExtraccoinesPosibles() == 0){
+            return 'No tiene habilitadas mas extracciones!';
+        }else{
+            return 'No puede extraer mas que el saldo!';
+        }
     }
     
-    public function depositar(){
-        return 0;
+    public function depositar($p_importe){
+        $this->setSaldo($this->getSaldo()+$p_importe);
+        return $this->getSaldo();
     }
     
     public function mostrar(){
-        echo '';
+        echo '- Caja de Ahorro - <br />';
+        echo 'Nro. Cuenta: <u>'.$this->getNroCuenta().'</u> - Saldo: <u>'.$this->getSaldo().'</u><br />';
+        echo 'Titular: <u>'.$this->getTitular()->nomyApe().'</u><br />';
+        echo 'Extracciones posibles: <u>'.$this->getExtraccoinesPosibles().'</u><br />';
     }
     
     
